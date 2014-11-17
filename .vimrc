@@ -77,7 +77,7 @@ endif
 NeoBundle 'scrooloose/nerdtree'
 nmap \e :NERDTreeToggle<CR>
 
-NeoBundle 'ervandew/supertab'
+"NeoBundle 'ervandew/supertab'
 
 NeoBundle 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
@@ -95,7 +95,7 @@ let g:airline#extensions#whitespace#enabled = 1
 "NeoBundle 'justinmk/vim-sneak' " Normal mode binding s{char}{char} searching
 "let g:sneak#streak = 1
 
-NeoBundle 'jaxbot/semantic-highlight.vim'
+"NeoBundle 'jaxbot/semantic-highlight.vim'
 NeoBundle 'ivyl/vim-bling' " Adds blinking to search
 let g:bling_count = 5
 
@@ -124,16 +124,25 @@ NeoBundle 'Shougo/vimproc', {
      \ }
 NeoBundle 'Shougo/unite.vim'
 
-NeoBundle 'rizzatti/dash.vim'
+NeoBundle 'Valloric/YouCompleteMe', {
+     \ 'build' : {
+     \     'mac' : './install.sh --clang-completer --system-libclang',
+     \     'unix' : './install.sh --clang-completer --system-libclang',
+     \     'windows' : './install.sh --clang-completer --system-libclang',
+     \     'cygwin' : './install.sh --clang-completer --system-libclang'
+     \    }
+     \ }
+
+"NeoBundle 'rizzatti/dash.vim'
 
 " NeoComplete requires OS X build with: brew install macvim --with-cscope --with-lua --HEAD
-NeoBundle 'Shougo/neocomplete'
-if filereadable($VIMRUNTIME . "/neocomplete_config.vim")
-  source $VIMRUNTIME/macros/matchit.vim
-endif
-NeoBundle 'm2mdas/phpcomplete-extended'
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-let g:neocomplete#enable_at_startup = 0
+"NeoBundle 'Shougo/neocomplete'
+"if filereadable($VIMRUNTIME . "/neocomplete_config.vim")
+"  source $VIMRUNTIME/macros/matchit.vim
+"endif
+"NeoBundle 'm2mdas/phpcomplete-extended'
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+"let g:neocomplete#enable_at_startup = 0
 
 NeoBundleLazy 'fatih/vim-go', {'autoload':{'filetypes':['go']}}
 
