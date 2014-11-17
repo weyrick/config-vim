@@ -60,19 +60,19 @@ silent! if emoji#available()
   let g:gitgutter_sign_modified_removed = emoji#for('collision')
 endif
 
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'marijnh/tern_for_vim', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'digitaltoad/vim-jade', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'bigfish/vim-js-context-coloring', {'autoload':{'filetypes':['javascript']}}
-NeoBundle 'mohitleo9/vim-fidget',{
-      \ 'build' : {
-      \    'unix' : 'npm install -g',
-      \    'mac' : 'npm install -g',
-      \ },
-  \} 
+"NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+"NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
+"NeoBundleLazy 'marijnh/tern_for_vim', {'autoload':{'filetypes':['javascript']}}
+"NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript']}}
+"NeoBundleLazy 'digitaltoad/vim-jade', {'autoload':{'filetypes':['javascript']}}
+"NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript']}}
+"NeoBundleLazy 'bigfish/vim-js-context-coloring', {'autoload':{'filetypes':['javascript']}}
+"NeoBundle 'mohitleo9/vim-fidget',{
+"      \ 'build' : {
+"      \    'unix' : 'npm install -g',
+"      \    'mac' : 'npm install -g',
+"      \ },
+"  \} 
 
 NeoBundle 'scrooloose/nerdtree'
 nmap \e :NERDTreeToggle<CR>
@@ -99,12 +99,12 @@ NeoBundle 'jaxbot/semantic-highlight.vim'
 NeoBundle 'ivyl/vim-bling' " Adds blinking to search
 let g:bling_count = 5
 
-NeoBundle 'mbbill/undotree' " Adds complete undotree
-nnoremap \u :UndotreeToggle<CR>
-if has("persistent_undo")
-  set undodir='~/.cache/vimundo/'
-  set undofile
-endif
+"NeoBundle 'mbbill/undotree' " Adds complete undotree
+"nnoremap \u :UndotreeToggle<CR>
+"if has("persistent_undo")
+"  set undodir='~/.cache/vimundo/'
+"  set undofile
+"endif
 
 NeoBundle 'majutsushi/tagbar' " \g to open ctags tagbar
 nmap \g :TagbarToggle<CR>
