@@ -4,3 +4,6 @@
 [submodule ".vim/delimitMate"]
 	path = .vim/delimitMate
 	url = git@github.com:Raimondi/delimitMate.git
+[submodule ".vim/nerdcommenter"]
+	path = .vim/nerdcommenter
+	url = git@github.com:scrooloose/nerdcommenter.git
