@@ -110,7 +110,7 @@ NeoBundle 'majutsushi/tagbar' " \g to open ctags tagbar
 nmap \g :TagbarToggle<CR>
 
 
-NeoBundle 'sheerun/vim-polyglot'
+"NeoBundle 'sheerun/vim-polyglot'
 
 NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
 
@@ -133,6 +133,9 @@ NeoBundle 'Valloric/YouCompleteMe', {
      \    }
      \ }
 
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+
 "NeoBundle 'rizzatti/dash.vim'
 
 " NeoComplete requires OS X build with: brew install macvim --with-cscope --with-lua --HEAD
@@ -144,7 +147,20 @@ NeoBundle 'Valloric/YouCompleteMe', {
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 "let g:neocomplete#enable_at_startup = 0
 
+"NeoBundle 'jmcantrell/vim-virtualenv'
+
 NeoBundleLazy 'fatih/vim-go', {'autoload':{'filetypes':['go']}}
+
+"NeoBundleLazy 'nvie/vim-flake8'
+"autocmd FileType python map <buffer> <Leader>f :call Flake8()<CR>
+"let g:flake8_ignore="E202,E123"
+"let g:flake8_show_in_gutter=1  " show
+"let g:flake8_show_in_file=1  " show
+"autocmd BufWritePost *.py call Flake8()
+
+"NeoBundle 'klen/python-mode', 'develop' ", {'autoload':{'filetypes':['python']}}
+"let g:pymode_virtualenv = 1
+
 
 " Required:
 call neobundle#end()
@@ -210,7 +226,6 @@ highlight Comment cterm=italic
 """""""""""""""""""" FILES SPECIFIC
 
 au bufNewFile *.html 0r ~/.vim/templates/html.txt
-au BufRead,BufNewFile *.jsm setfiletype javascript
 au BufRead,BufNewFile *.xul setfiletype xml
 au BufRead,BufNewFile *.md set ft=markdown
 au BufRead,BufNewFile *.json set ft=json
@@ -219,7 +234,7 @@ autocmd filetype html,xml set listchars-=tab:>.
 nnoremap <leader>j :%!jq .<CR>
 nnoremap <leader>b :%!xxd<CR>
 
-autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
+"autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
 """"""""""""""" pastetoggle
 set pastetoggle=<F3>
