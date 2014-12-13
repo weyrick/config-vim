@@ -143,7 +143,8 @@ let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 "if filereadable($VIMRUNTIME . "/neocomplete_config.vim")
 "  source $VIMRUNTIME/macros/matchit.vim
 "endif
-"NeoBundle 'm2mdas/phpcomplete-extended'
+NeoBundle 'm2mdas/phpcomplete-extended'
+autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 "let g:neocomplete#enable_at_startup = 0
 
@@ -234,7 +235,6 @@ autocmd filetype html,xml set listchars-=tab:>.
 nnoremap <leader>j :%!jq .<CR>
 nnoremap <leader>b :%!xxd<CR>
 
-"autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
 """"""""""""""" pastetoggle
 set pastetoggle=<F3>
