@@ -62,7 +62,6 @@ endif
 
 "NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 "NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
-"NeoBundleLazy 'marijnh/tern_for_vim', {'autoload':{'filetypes':['javascript']}}
 "NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript']}}
 "NeoBundleLazy 'digitaltoad/vim-jade', {'autoload':{'filetypes':['javascript']}}
 "NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript']}}
@@ -134,9 +133,14 @@ NeoBundle 'Valloric/YouCompleteMe', {
      \ }
 
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+"let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+" turn off ycm python in favor of python-mode rope
+let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'python': 1
+      \}
 
 "NeoBundle 'rizzatti/dash.vim'
+
 
 " NeoComplete requires OS X build with: brew install macvim --with-cscope --with-lua --HEAD
 "NeoBundle 'Shougo/neocomplete'
@@ -152,6 +156,10 @@ autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
 NeoBundleLazy 'fatih/vim-go', {'autoload':{'filetypes':['go']}}
 
+NeoBundleLazy 'wting/rust.vim', {'autoload':{'filetypes':['rust']}}
+
+NeoBundleLazy 'marijnh/tern_for_vim', {'autoload':{'filetypes':['javascript']}}
+
 "NeoBundleLazy 'nvie/vim-flake8'
 "autocmd FileType python map <buffer> <Leader>f :call Flake8()<CR>
 "let g:flake8_ignore="E202,E123"
@@ -159,9 +167,22 @@ NeoBundleLazy 'fatih/vim-go', {'autoload':{'filetypes':['go']}}
 "let g:flake8_show_in_file=1  " show
 "autocmd BufWritePost *.py call Flake8()
 
-"NeoBundle 'klen/python-mode', 'develop' ", {'autoload':{'filetypes':['python']}}
-"let g:pymode_virtualenv = 1
+NeoBundleLazy 'klen/python-mode', 'develop', {'autoload':{'filetypes':['python']}}
+let g:pymode_virtualenv = 1
+let g:pymode_folding = 0
+let g:pymode_options = 1
+"let g:pymode_indent = []
+let g:pymode_virtualenv_path = $VIRTUAL_ENV
+let g:pymode_lint = 1
+let g:pymode_lint_ignore = "E501,W"
+let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+let g:pymode_lint_message = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_rope = 1
+let g:pymode_rope_completion = 1
 
+NeoBundle 'nathanaelkane/vim-indent-guides.git'
+let g:indent_guides_enable_on_vim_startup = 1
 
 " Required:
 call neobundle#end()
@@ -199,7 +220,7 @@ set wildignore=*.swp,*.bak
 set title
 set visualbell
 set noerrorbells
-exec "set listchars=tab:⧽⧽,trail:⸰,nbsp:⸰"
+exec "set listchars=tab:››,trail:⸰,nbsp:⸰"
 set list
 set ttyfast
 set nocompatible
@@ -226,11 +247,27 @@ highlight Comment cterm=italic
 
 """""""""""""""""""" FILES SPECIFIC
 
+au BufNewFile,BufRead *.rs set filetype=rust
 au bufNewFile *.html 0r ~/.vim/templates/html.txt
 au BufRead,BufNewFile *.xul setfiletype xml
 au BufRead,BufNewFile *.md set ft=markdown
 au BufRead,BufNewFile *.json set ft=json
 
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+
+autocmd filetype go set nolist
 autocmd filetype html,xml set listchars-=tab:>.
 nnoremap <leader>j :%!jq .<CR>
 nnoremap <leader>b :%!xxd<CR>
